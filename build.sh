@@ -3,13 +3,13 @@ set -eux -o pipefail
 
 . utils.sh
 . env.sh
-. dependency_host.sh
+. host_install_debs.sh
 . cross_toolchain.sh
 . rootfs.sh
 . rpi_opengl.sh
 . kernel.sh
 . qt.sh
-. image_generate.sh
+. sd_card_image.sh
 
 
 
@@ -25,7 +25,7 @@ main(){
 
 	utils::log::setup
 
-	dependency::build
+	host_install_debs::build
 	cross_toolchain::build
 	rootfs::build
 	rpi_opengl::build

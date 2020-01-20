@@ -3,7 +3,7 @@ set -eux -o pipefail
 
 . utils.sh
 
-dependency::install(){
+host_install_debs::install(){
 	declare -a arr=("bison"
 			"gperf"
 			"qemu-user-static"
@@ -51,7 +51,7 @@ dependency::install(){
 	done
 }
 
-dependency::build(){
+host_install_debs::build(){
 	utils::log "Installing dependencies for host ubuntu..."
-	dependency::install
+	host_install_debs::install
 }
