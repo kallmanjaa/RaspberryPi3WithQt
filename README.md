@@ -16,3 +16,6 @@ Rpi3 with kernel_build and ubuntu 18.04 rootfs with qt_build for eglfs [no wayla
     kernel: 5.5.y
     qt: qt-5.13.2
     rootfs: ubuntu 18.04 [armhf]
+
+## Build time:
+    build process takes few hours.. depending on cpu cores and your internet connection
