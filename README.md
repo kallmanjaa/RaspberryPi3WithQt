@@ -10,7 +10,7 @@ Rpi3 with kernel_build and ubuntu 18.04 rootfs with qt_build for eglfs [no wayla
     After the build rpi3.img is generated in build directory
 ### Flash sdcard
     use tools like rufus or other to flash the image rpi3.img to sdcard
-    Note : make sure to use 16gb sdcard 
+    Note : make sure to use minimum 16gb sdcard 
 
 ### Versions used:
     kernel: 5.5.y
