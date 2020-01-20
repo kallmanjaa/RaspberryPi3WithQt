@@ -19,3 +19,7 @@ Rpi3 with kernel_build and ubuntu 18.04 rootfs with qt_build for eglfs [no wayla
 
 ## Build time:
     build process takes few hours.. depending on cpu cores and your internet connection
+
+## ToDo:
+    set up docker 
+    set up jenkins
