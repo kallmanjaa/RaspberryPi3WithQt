@@ -27,6 +27,7 @@ qt::compile(){
  	pushd "${QT_SRC_DIR}"
 		./configure -opensource -confirm-license -prefix /opt -release -force-debug-info -opengl es2 -device linux-rasp-pi3-g++ -sysroot "${ROOTFS_TARGET_DIR:?}" \
 		-device-option CROSS_COMPILE="${CROSS_COMPILE:?}" \
+		-skip qtscript \
 		-no-xcb \
 		-no-sql-db2 \
 		-no-mtdev \
