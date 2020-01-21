@@ -25,7 +25,7 @@ qt::get_source_and_validate(){
 qt::compile(){
  	utils::log "Qt start compile"
  	pushd "${QT_SRC_DIR}"
-		./configure -opensource -confirm-license -prefix /opt -release -force-debug-info -opengl es2 -device linux-rasp-pi3-g++ -sysroot "${ROOTFS_TARGET_DIR:?}" \
+		./configure -opensource -confirm-license -prefix /qt -release -force-debug-info -opengl es2 -device linux-rasp-pi3-g++ -sysroot "${ROOTFS_TARGET_DIR:?}" \
 		-device-option CROSS_COMPILE="${CROSS_COMPILE:?}" \
 		-skip qtscript \
 		-no-xcb \
