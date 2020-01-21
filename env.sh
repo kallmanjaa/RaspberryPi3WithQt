@@ -12,7 +12,7 @@ export CROSS_TOOLCHAIN_SRC=https://github.com/raspberrypi/tools.git
 export RPI_FIRMWARE_SRC=https://github.com/raspberrypi/firmware.git
 
 ##cross_compile
-export CROSS_COMPILE="${BUILD_DIR}/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf-"
+export CROSS_COMPILE="/usr/bin/arm-linux-gnueabihf-"
 export ARCH="arm"
 CPU_CORES="$(nproc)" || true
 export CPU_CORES
@@ -42,7 +42,7 @@ export KERNEL_BRANCH=rpi-5.5.y
 
 ##image genration
 export IMAGEFILE=rpi3.img
-export IMAGE_SIZE=+15G
+export IMAGE_SIZE=+13G
 
 ##qt
 export QT_VERSION=qt-everywhere-src-5.13.2

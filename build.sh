@@ -26,7 +26,7 @@ main(){
 	utils::log::setup
 
 	host_install_debs::build
-	cross_toolchain::build
+	#cross_toolchain::build
 	rootfs::build
 	rpi_opengl::build
 	kernel::build
