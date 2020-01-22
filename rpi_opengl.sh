@@ -12,7 +12,7 @@ rpi_opengl::download_rpi_firmware(){
 
 rpi_opengl::copy_sources_to_rootfs(){
 	utils::log "copy gpu libs to rootfs..."
-	rsync -av --recursive --progress "${BUILD_DIR:?}/firmware/opt/vc" "${ROOTFS_TARGET_DIR:?}/opt"
+	rsync -av --recursive --progress "${BUILD_DIR:?}/firmware/hardfp/opt/vc" "${ROOTFS_TARGET_DIR:?}/opt"
 }
 
 rpi_opengl::build(){

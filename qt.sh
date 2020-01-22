@@ -63,6 +63,7 @@ qt::compile(){
 		-no-sm \
 		-no-sql-ibase \
 		-no-sql-odbc \
+		-no-webengine-v8-snapshot \
 		-release -v
 	popd
 }
@@ -92,5 +93,5 @@ qt::build(){
 	qt::compile
 	qt::make
 	qt::make_install
-	qt::cleanup
+	#qt::cleanup
 }
