@@ -34,7 +34,11 @@ host_install_debs::install(){
 			"libssl-dev"
 			"lib32z1" 
 			"lib32ncurses5"
-			"lib32stdc++6")
+			"lib32stdc++6"
+			"rsync"
+			"parted"
+			"udev"
+			"kmod")
 
 				
 
@@ -46,7 +50,7 @@ host_install_debs::install(){
 
 	    } || {
 
-	        sudo apt-get install -y "$package"
+	        apt-get install -y "$package"
 
 	    }
 

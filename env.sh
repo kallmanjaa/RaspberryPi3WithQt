@@ -44,7 +44,7 @@ export KERNEL_BRANCH=rpi-5.5.y
 
 ##image genration
 export IMAGEFILE=rpi3.img
-export IMAGE_SIZE=+13G
+export IMAGE_SIZE=+1G
 
 ##qt
 export QT_VERSION=qt-everywhere-src-5.13.2

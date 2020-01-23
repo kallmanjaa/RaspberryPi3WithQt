@@ -1,6 +1,7 @@
 #!/bin/bash
 set -eux -o pipefail
 
+cd "$(dirname "$0")"
 . utils.sh
 . env.sh
 . host_install_debs.sh
@@ -28,7 +29,7 @@ main(){
 	rpi_opengl::build
 	rootfs::build
 	kernel::build
-	qt::build
+	#qt::build
 	image::build 
 
 	end=$(date +%s)

@@ -4,6 +4,15 @@ set -eux -o pipefail
 . utils.sh
 . env.sh 
 
+image::add_mknod(){
+
+	mknod /dev/loop0 -m0660 b 7 0
+	mknod /dev/loop1 -m0660 b 7 1
+	mknod /dev/loop2 -m0660 b 7 2
+	mknod /dev/loop3 -m0660 b 7 3
+	mknod /dev/loop4 -m0660 b 7 4
+}
+
 image::create_virtual_disk_image(){
 	utils::log "create virtual disk..."
 	truncate -s "${IMAGE_SIZE}" "${BUILD_DIR}"/"${IMAGEFILE}" #faster way
@@ -54,6 +63,7 @@ image::clean_up(){
 #sequence
 image::build(){
 	utils::log "===============image generate log================"
+	image::add_mknod
 	image::create_virtual_disk_image
 	image::create_partition
 	image::create_image
