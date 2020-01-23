@@ -79,7 +79,6 @@ qt::make_install(){
 		make install
 	popd
 
-	rsync -r --progress "${ROOTFS_TARGET_DIR:?}/usr/share/fonts" "${ROOTFS_TARGET_DIR:?}/opt/lib/" ##copy fonts directory to /opt : can be done in chroot: not tested
 }
 
 qt::cleanup(){
@@ -93,5 +92,5 @@ qt::build(){
 	qt::compile
 	qt::make
 	qt::make_install
-	#qt::cleanup
+	qt::cleanup
 }

@@ -24,8 +24,19 @@ rootfs::checksum_verify(){
 rootfs::prepare_ubuntu_base(){
 	utils::log "Extracting ubuntu source base arm64..."
 	tar xpf "${BUILD_DIR:?}"/"${UBUNTU_BASE_SRC}" -C "${ROOTFS_TARGET_DIR}"
-	cp "${QEMU_AARCH64_STATIC}" "${ROOTFS_TARGET_DIR:?}"/usr/bin/
+	cp "${QEMU_ARM_STATIC}" "${ROOTFS_TARGET_DIR:?}"/usr/bin/
 	cp "${RESOLV_CONF}" "${ROOTFS_TARGET_DIR:?}"/etc
+}
+
+rootfs::copy_openGL_sources_to_rootfs(){
+	utils::log "copy gpu libs to rootfs..."
+	rsync -av --recursive --progress "${BUILD_DIR:?}/firmware/hardfp/opt/vc" "${ROOTFS_TARGET_DIR:?}/opt"
+}
+
+rootfs::apply_egl_patch(){
+	pushd "${ROOTFS_TARGET_DIR:?}/opt/vc/include/EGL"
+		patch -p1 eglext.h "${PATCH_DIR:?}/${EGL_PATCH_FILE}"
+	popd
 }
 
 rootfs::chrootJail(){
@@ -54,6 +65,10 @@ cat >> /etc/ssh/sshd_config <<EOL
 PermitRootLogin yes
 EOL
 
+pushd /opt/vc/lib
+ln -s *.so /usr/lib/arm-linux-gnueabihf
+popd
+
 pushd /usr/lib
 symlinks -rc .
 popd
@@ -74,7 +89,7 @@ rootfs::cleanUp()
 {
 	utils::log "clean up for rootfs..."
 	rm "${ROOTFS_TARGET_DIR:?}""${RESOLV_CONF}" || true
-	rm "${ROOTFS_TARGET_DIR:?}""${QEMU_AARCH64_STATIC}" || true
+	rm "${ROOTFS_TARGET_DIR:?}""${QEMU_ARM_STATIC}" || true
 }
 
 #sequence
@@ -86,6 +101,8 @@ rootfs::build(){
 	if [ "$val" == "Checksum_verified" ]
 	then
 		rootfs::prepare_ubuntu_base
+		rootfs::copy_openGL_sources_to_rootfs
+		rootfs::apply_egl_patch
 		rootfs::chrootJail
 		rootfs::cleanUp
 	else

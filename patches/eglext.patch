@@ -1,0 +1,19 @@
+--- eglext.h	2020-01-23 06:09:03.944582836 -0500
++++ eglext_new.h	2020-01-23 06:09:55.696582836 -0500
+@@ -190,6 +190,16 @@
+ typedef EGLBoolean (EGLAPIENTRYP PFNEGLGETSYNCATTRIBKHRPROC) (EGLDisplay dpy, EGLSyncKHR sync, EGLint attribute, EGLint *value);
+ #endif
+ 
++#ifndef EGL_ANDROID_blob_cache
++#define EGL_ANDROID_blob_cache 1
++typedef khronos_ssize_t EGLsizeiANDROID;
++typedef void (*EGLSetBlobFuncANDROID) (const void *key, EGLsizeiANDROID keySize, const void *value, EGLsizeiANDROID valueSize);
++typedef EGLsizeiANDROID (*EGLGetBlobFuncANDROID) (const void *key, EGLsizeiANDROID keySize, void *value, EGLsizeiANDROID valueSize);
++typedef void (EGLAPIENTRYP PFNEGLSETBLOBCACHEFUNCSANDROIDPROC) (EGLDisplay dpy, EGLSetBlobFuncANDROID set, EGLGetBlobFuncANDROID get);
++#ifdef EGL_EGLEXT_PROTOTYPES
++EGLAPI void EGLAPIENTRY eglSetBlobCacheFuncsANDROID (EGLDisplay dpy, EGLSetBlobFuncANDROID set, EGLGetBlobFuncANDROID get);
++#endif
++#endif /* EGL_ANDROID_blob_cache */
+ 
+ #ifdef __cplusplus
+ }

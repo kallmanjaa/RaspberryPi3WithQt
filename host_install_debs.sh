@@ -9,6 +9,8 @@ host_install_debs::install(){
 			"qemu-user-static"
 			"debootstrap"
 			"binfmt-support"
+			"gcc-multilib"
+			"g++-multilib"
 			"g++-arm-linux-gnueabihf"
 			"gcc-arm-linux-gnueabihf"
 			"libncurses5-dev"

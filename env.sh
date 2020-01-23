@@ -3,10 +3,12 @@ set -eux -o pipefail
 
 export CURRENT_DIR=${PWD}
 export BUILD_DIR=${CURRENT_DIR}/build
-export SOURCES=${CURRENT_DIR}/sources
 
-##cross toolchain
-export CROSS_TOOLCHAIN_SRC=https://github.com/raspberrypi/tools.git
+##patches
+export PATCH_DIR=${CURRENT_DIR}/patches
+
+##patchfile
+export EGL_PATCH_FILE=eglext.patch
 
 ## rpi firmware src
 export RPI_FIRMWARE_SRC=https://github.com/raspberrypi/firmware.git
@@ -27,7 +29,7 @@ export UBUNTU_SRC_WEBSITE=http://cdimage.ubuntu.com/ubuntu-base/releases/18.04.3
 export UBUNTU_SRC_CHECKSUM="dd52bbd8ecd1398ee61042db9dabad585b39c90988343767be4877db8945d44a"
 
 ## for qemu and resolvconf
-export QEMU_AARCH64_STATIC=/usr/bin/qemu-arm-static
+export QEMU_ARM_STATIC=/usr/bin/qemu-arm-static
 export RESOLV_CONF=/etc/resolv.conf
 
 ##kernel

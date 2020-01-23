@@ -4,9 +4,8 @@ set -eux -o pipefail
 . utils.sh
 . env.sh
 . host_install_debs.sh
-. cross_toolchain.sh
-. rootfs.sh
 . rpi_opengl.sh
+. rootfs.sh
 . kernel.sh
 . qt.sh
 . sd_card_image.sh
@@ -26,9 +25,8 @@ main(){
 	utils::log::setup
 
 	host_install_debs::build
-	#cross_toolchain::build
-	rootfs::build
 	rpi_opengl::build
+	rootfs::build
 	kernel::build
 	qt::build
 	image::build 
