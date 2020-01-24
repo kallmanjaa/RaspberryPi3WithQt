@@ -13,6 +13,7 @@ host_install_debs::install(){
 			"g++-multilib"
 			"g++-arm-linux-gnueabihf"
 			"gcc-arm-linux-gnueabihf"
+			"linux-libc-dev:i386"
 			"libncurses5-dev"
 			"libncursesw5-dev"
 			"device-tree-compiler"
@@ -38,7 +39,9 @@ host_install_debs::install(){
 			"rsync"
 			"parted"
 			"udev"
-			"kmod")
+			"kmod"
+			"subversion"
+			"dosfstools")
 
 				
 
@@ -58,6 +61,5 @@ host_install_debs::install(){
 }
 
 host_install_debs::build(){
-	utils::log "Installing dependencies for host ubuntu..."
 	host_install_debs::install
 }

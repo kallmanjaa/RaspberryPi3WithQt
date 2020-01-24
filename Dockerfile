@@ -1,8 +1,10 @@
-#Download base image ubuntu 16.04
+#Download base image ubuntu 18.04
 FROM ubuntu:18.04
  
 # Update Software repository
-RUN apt-get update
+RUN dpkg --add-architecture i386 \
+	&& apt-get update
+
 
 COPY . /rpi3
 

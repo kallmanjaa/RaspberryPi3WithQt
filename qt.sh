@@ -5,7 +5,6 @@ set -eux -o pipefail
 . env.sh
 
 qt::get_source_and_validate(){
-	utils::log "Download and validate qt source..."
 	pushd "${BUILD_DIR}"
 
 	wget "${QT_DOWNLOAD_SRC}"
@@ -23,7 +22,6 @@ qt::get_source_and_validate(){
 }
 
 qt::compile(){
- 	utils::log "Qt start compile"
  	pushd "${QT_SRC_DIR}"
 		./configure -opensource -confirm-license -prefix /qt -release -force-debug-info -opengl es2 -device linux-rasp-pi3-g++ -sysroot "${ROOTFS_TARGET_DIR:?}" \
 		-device-option CROSS_COMPILE="${CROSS_COMPILE:?}" \

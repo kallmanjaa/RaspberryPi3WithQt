@@ -5,7 +5,6 @@ set -eux -o pipefail
 . env.sh 
 
 kernel::clone_source(){
-	utils::log "cloning kernel source..."
 	mkdir -p "${KERNEL_DIR:?}"
 	pushd "${KERNEL_DIR:?}"
 		git clone --progress "${KERNEL_SRC}" -b "${KERNEL_BRANCH}" 
@@ -14,7 +13,6 @@ kernel::clone_source(){
 }
 
 kernel::kernel_build(){
-	utils::log "kernel building..."
 	make -j"${CPU_CORES}" -C "${KERNEL_DIR:?}/linux" clean
 	make -j"${CPU_CORES}" -C "${KERNEL_DIR:?}/linux" "${KERNEL_CONFIG:?}"
 	make -j"${CPU_CORES}" -C "${KERNEL_DIR:?}/linux" zImage modules dtbs
@@ -22,7 +20,6 @@ kernel::kernel_build(){
 
 
 kernel::install_modules(){
-	utils::log "install modules to rootfs..."
 	make -j"${CPU_CORES}" -C "${KERNEL_DIR:?}/linux" modules_install INSTALL_MOD_PATH="${ROOTFS_TARGET_DIR:?}"
 	make -j"${CPU_CORES}" -C "${KERNEL_DIR:?}/linux" headers_install INSTALL_HDR_PATH="${ROOTFS_TARGET_DIR:?}"
 }
@@ -55,9 +52,10 @@ kernel::prepare_bootfs(){
 
 #sequence
 kernel::build(){
-	utils::log "===============kernel install log================"
+	utils::log "=============== kernel build started ================"
 	kernel::clone_source
 	kernel::kernel_build
 	kernel::install_modules
 	kernel::prepare_bootfs
+	utils::log "=============== kernel build completed ================"
 }

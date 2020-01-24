@@ -5,7 +5,6 @@ cd "$(dirname "$0")"
 . utils.sh
 . env.sh
 . host_install_debs.sh
-. rpi_opengl.sh
 . rootfs.sh
 . kernel.sh
 . qt.sh
@@ -23,10 +22,10 @@ main(){
 	if [ -d "${BUILD_DIR}" ]; then rm -Rf "${BUILD_DIR}"; fi # start always clean build	
 	mkdir -p "${BUILD_DIR}"
 
+	mkdir -p "${BOOTFS_DIR:?}"
 	utils::log::setup
 
 	host_install_debs::build
-	rpi_opengl::build
 	rootfs::build
 	kernel::build
 	#qt::build

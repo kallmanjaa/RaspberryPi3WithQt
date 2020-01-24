@@ -11,7 +11,7 @@ export PATCH_DIR=${CURRENT_DIR}/patches
 export EGL_PATCH_FILE=eglext.patch
 
 ## rpi firmware src
-export RPI_FIRMWARE_SRC=https://github.com/raspberrypi/firmware.git
+export RPI_FIRMWARE_SRC=https://github.com/raspberrypi/firmware/trunk/hardfp/opt/vc
 
 ##cross_compile
 export CROSS_COMPILE="/usr/bin/arm-linux-gnueabihf-"
@@ -45,6 +45,7 @@ export KERNEL_BRANCH=rpi-5.5.y
 ##image genration
 export IMAGEFILE=rpi3.img
 export IMAGE_SIZE=+1G
+export LOOP_DEVICE=/dev/loop99
 
 ##qt
 export QT_VERSION=qt-everywhere-src-5.13.2
