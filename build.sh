@@ -22,13 +22,12 @@ main(){
 	if [ -d "${BUILD_DIR}" ]; then rm -Rf "${BUILD_DIR}"; fi # start always clean build	
 	mkdir -p "${BUILD_DIR}"
 
-	mkdir -p "${BOOTFS_DIR:?}"
 	utils::log::setup
 
 	host_install_debs::build
 	rootfs::build
 	kernel::build
-	#qt::build
+	qt::build
 	image::build 
 
 	end=$(date +%s)

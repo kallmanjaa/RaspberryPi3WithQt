@@ -8,4 +8,4 @@ RUN dpkg --add-architecture i386 \
 
 COPY . /rpi3
 
-##ENTRYPOINT ["/rpi3/build.sh"] 
+ENTRYPOINT ["/rpi3/build.sh"] 
